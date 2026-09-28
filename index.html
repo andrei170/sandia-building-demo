@@ -1,0 +1,389 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sandia Building Solutions &middot; Direct-Quote Positioning Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10151b; --mut:#5b6672; --soft:#7a8693; --line:#e4e8ee; --bg:#f7f9fb; --panel:#fff;
+  --deep:#0f2740; --deep2:#1b3e5f; --acc:#2f6fbf; --acc2:#8cc0ef; --ok:#1f7a45; --warn:#9a6a10;
+  --r:14px; --shadow:0 1px 2px rgba(16,21,27,.04), 0 8px 24px rgba(16,21,27,.06);
+  --shadow-lg:0 24px 60px rgba(10,20,32,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{font-family:Bitter,Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-.016em;text-wrap:balance}
+a{color:var(--acc)}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+@media(max-width:560px){.wrap{padding:0 16px}}
+
+/* ---------- banners ---------- */
+.demobar{background:#0d1117;color:#dbe4ee;font-size:12.5px;text-align:center;padding:9px 16px;letter-spacing:.01em}
+.demobar b{color:#f0b13c}
+.urg{background:#8a1c1c;color:#fff;text-align:center;font-size:13.5px;padding:9px;font-weight:500}
+.urg a{color:#fff}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:60;background:rgba(247,249,251,.88);backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--line)}
+.navin{max-width:1140px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:Bitter,serif;font-weight:700;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.logo span{color:var(--acc)}
+.navl{display:flex;gap:22px;font-size:14.5px;font-weight:500}
+.navl a{color:var(--mut);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.navl a:hover{color:var(--deep2);border-bottom-color:var(--acc2)}
+.navl a.on{color:var(--deep2);font-weight:700}
+.call{display:inline-flex;align-items:center;gap:8px;background:var(--deep2);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;padding:10px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px rgba(27,62,95,.22);transition:transform .15s,box-shadow .15s}
+.call:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(27,62,95,.3)}
+@media(max-width:900px){.navl{display:none}}
+@media(max-width:430px){.call{padding:9px 13px;font-size:13.5px}}
+
+/* ---------- hero (single column: no demo has a hero form) ---------- */
+.hero{position:relative;background:
+   radial-gradient(1100px 520px at 78% -10%, rgba(140,192,239,.22), transparent 60%),
+   linear-gradient(158deg,var(--deep) 0%, var(--deep2) 100%);
+  color:#eaf1f8;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.09;
+  background:repeating-linear-gradient(78deg,transparent 0 40px,rgba(255,255,255,.5) 40px 41px),
+             repeating-linear-gradient(-12deg,transparent 0 40px,rgba(255,255,255,.28) 40px 41px)}
+.heroin{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:64px 22px 70px}
+@media(max-width:820px){.heroin{padding:44px 18px 50px}}
+.eyeb{display:inline-block;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--acc2);border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.05);padding:6px 13px;border-radius:999px;margin-bottom:18px}
+.hero h1{font-size:clamp(30px,4.9vw,50px);margin-bottom:16px;max-width:24ch;text-wrap:balance}
+@media(max-width:820px){.hero h1{max-width:none}}
+.hero h1 em{font-style:normal;color:var(--acc2)}
+.hero .lede,.hero .sh{font-size:clamp(16px,1.9vw,18.5px);color:#cbdaea;max-width:62ch;text-align:left;margin:0}
+.hero .sh b{color:#fff}
+.hero p+p{margin-top:12px}
+
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 4px}
+.bdg{font-size:13px;font-weight:600;color:#dbe8f5;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:7px 13px;border-radius:999px;backdrop-filter:blur(4px)}
+
+.hero .btn{display:inline-flex;align-items:center;justify-content:center;width:auto;margin-top:26px;padding:15px 30px;border-radius:999px;box-shadow:0 12px 30px rgba(47,111,191,.4)}
+.hint{font-size:13px;color:#a9bdd2;margin-top:12px;text-align:left}
+
+/* ---------- trust bar ---------- */
+.trust{background:#0b1218;color:#b6c2cd;padding:18px 0;border-top:1px solid rgba(255,255,255,.06)}
+.trustin{max-width:1140px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px 30px;font-size:13.5px}
+@media(max-width:820px){.trustin{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.trustin{grid-template-columns:1fr}}
+.fact{display:flex;flex-direction:column;gap:3px;padding-left:13px;border-left:2px solid rgba(140,192,239,.45)}
+.fact b{color:#8cc0ef;font-weight:700;font-family:Bitter,serif;font-size:15px}
+.fact span{color:#93a3b3;font-size:13px;line-height:1.5}
+.trustin>b{color:var(--acc2)}
+
+/* ---------- sections ---------- */
+section{padding:64px 0}
+@media(max-width:700px){section{padding:46px 0}}
+.band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(25px,3.4vw,35px);margin-bottom:13px;letter-spacing:-.02em}
+section h3{font-size:19px;margin-bottom:7px}
+.sh{font-size:16.5px;color:var(--mut);max-width:74ch;margin:0 0 30px}
+.sh b{color:var(--ink)}
+.sh .kick{display:block;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:10px}
+section p+.sh{margin-top:14px}
+
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .16s,box-shadow .16s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(16,21,27,.11)}
+.band .card{background:var(--bg)}
+.ctop{font-family:Bitter,serif;font-weight:700;font-size:17.5px;padding:16px 20px;background:linear-gradient(180deg,#f3f7fb,#eaf1f8);border-bottom:1px solid var(--line);color:var(--deep)}
+.cbody{padding:17px 20px 20px;font-size:15px;color:var(--mut);flex:1}
+.cbody p{margin-bottom:10px}
+.cbody i{color:var(--soft)}
+
+/* ticks: used INSIDE light cards - must be dark, and on the dark hero - must be light */
+.ticks{list-style:none;display:grid;gap:9px;margin-top:13px}
+.ticks li{display:flex;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.5}
+.ticks li::before{content:"";flex:0 0 16px;height:16px;margin-top:4px;border-radius:50%;
+  background:var(--ok) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23fff' d='M6.4 11.6 3.2 8.4l1.1-1.1 2.1 2.1 5-5 1.1 1.1z'/%3E%3C/svg%3E") center/13px no-repeat}
+.hero .ticks li{color:#dde6ee}
+.ticks svg{flex:0 0 18px;margin-top:4px;fill:var(--acc2)}
+
+/* ---------- two-up boxes ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:780px){.two{grid-template-columns:1fr}}
+.box{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.band .box{background:var(--bg)}
+.box h3{color:var(--deep);font-size:18px;margin-bottom:8px}
+.box p{font-size:15px;color:var(--mut)}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;counter-reset:s}
+.step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px 20px;box-shadow:var(--shadow)}
+.band .step{background:var(--bg)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-13px;left:20px;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-family:Bitter,serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 14px rgba(47,111,191,.35)}
+.step b{display:block;font-family:Bitter,serif;font-size:16px;margin:8px 0 6px;color:var(--deep)}
+.step span{font-size:14.2px;color:var(--mut);line-height:1.55}
+
+/* ---------- area chips ---------- */
+.areas{display:flex;flex-wrap:wrap;gap:9px}
+.areas span{font-size:14px;font-weight:500;background:var(--panel);border:1px solid var(--line);color:var(--deep2);padding:8px 15px;border-radius:999px;box-shadow:0 1px 2px rgba(16,21,27,.04)}
+.band .areas span{background:var(--bg)}
+
+/* ---------- form ---------- */
+.form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow-lg);color:var(--ink);max-width:620px;margin:0 auto}
+.band .form{background:var(--bg)}
+.form h3{font-size:20px;margin-bottom:4px}
+.form .fs{font-size:13.5px;color:var(--mut);margin-bottom:14px}
+label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:14px 0 5px}
+select,input{width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:12px 13px;transition:border-color .15s,box-shadow .15s}
+select:focus,input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(47,111,191,.16)}
+.chk{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chk label{display:inline-flex;align-items:center;gap:7px;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fbfcfd;font-size:13.5px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink);cursor:pointer}
+.chk input{width:auto;padding:0;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;margin-top:20px;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:14px 22px;font-family:Bitter,serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(.92);transform:translateY(-1px)}
+.fnote{font-size:12px;color:var(--soft);margin-top:11px;text-align:center;font-style:italic}
+.out{display:none;margin-top:15px;border-radius:10px;padding:15px 16px;font-size:14.5px;border:1px solid}
+.out.show{display:block}
+.out b{display:block;font-family:Bitter,serif;font-size:16.5px;margin-bottom:5px}
+.o-hi{background:#eef6f0;border-color:#bedcc6;color:#1d5734}
+.o-md{background:#fdf6ea;border-color:#ecdcb2;color:#775413}
+.o-lo{background:#f3f5f7;border-color:#dde2e7;color:#48515a}
+.o-urg{background:#fdeeee;border-color:#f0c6c4;color:#8a1c1c}
+
+/* ---------- reviews / misc legacy ---------- */
+.revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);font-size:14.8px;color:var(--mut)}
+.stars{color:#e0a92b;letter-spacing:2px;margin-bottom:8px}
+.facts,.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.tagp{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:10px}
+.ratebar{display:flex;align-items:baseline;gap:10px;margin:10px 0}
+.ratebig{font-family:Bitter,serif;font-size:30px;font-weight:700;color:var(--deep)}
+.ratetxt{font-size:14px;color:var(--mut)}
+.cta2{background:linear-gradient(158deg,var(--deep),var(--deep2));color:#eaf1f8;padding:56px 0;text-align:center}
+.cta2 h2{color:#fff;margin-bottom:10px}
+
+/* ---------- footer ---------- */
+footer{background:#0b1218;color:#8e9daf;font-size:12.6px;line-height:1.72;padding:34px 0 46px;border-top:1px solid rgba(255,255,255,.07)}
+footer b{color:#c3d1de;font-weight:600}
+
+/* ---------- quote block promoted to the top of the page ---------- */
+.quote{background:linear-gradient(180deg,#eef3f8,var(--bg));border-bottom:1px solid var(--line);padding:46px 0 52px}
+.quote .wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+.quote h2{margin-bottom:8px}
+.quote .sh{margin:0 auto 24px;text-align:center}
+.quote .form{width:100%;text-align:left}
+.quote .form label{text-align:left}
+@media(max-width:700px){.quote{padding:34px 0 38px}}
+</style>
+<div class="demobar">Concept page prepared by AG1 Consulting for Adam and Alfonso &middot; not a live website</div>
+
+<div class="navin">
+  <div class="logo">Sandia Building Solutions</div>
+  <div class="navl">
+    <a href="#direct">Why Call Direct</a>
+    <a href="#roofing">Roofing</a>
+    <a href="#restoration">Restoration</a>
+    <a href="#areas">Where We Work</a>
+  </div>
+  <a class="call" href="#quote">Get a direct quote</a>
+</div>
+
+<div class="hero">
+  <div class="heroin">
+    <div class="eyeb">Roofing &amp; Property Restoration &middot; Albuquerque &amp; Central New Mexico</div>
+    <h1>One contractor. One visit. One honest price. You are not bidding us against three other firms.</h1>
+    <p class="sh">Thirty years in Central New Mexico and more than eight thousand roofs. When you call us directly,
+    your details do not get sold to anybody else &mdash; so we are not racing three other contractors to your door and
+    cutting the price to win.</p>
+    <div class="badges">
+      <span class="bdg">30+ years in New Mexico</span>
+      <span class="bdg">8,000+ roofs installed</span>
+      <span class="bdg">Residential &amp; commercial</span>
+      <span class="bdg">Licensed &amp; insured</span>
+    </div>
+  </div>
+</div>
+
+<a name="quote"></a>
+<section class="quote">
+  <div class="wrap">
+    <p class="sh">Tell us about the property. We will come out and give you one straight price.</p>
+    <div class="form">
+      <input type="text" placeholder="Your name">
+      <input type="tel" placeholder="Phone number">
+      <input type="text" placeholder="Property address or ZIP">
+      <select>
+        <option>What do you need?</option>
+        <option>Roof replacement</option>
+        <option>Roof repair or a leak</option>
+        <option>Storm or hail damage &mdash; insurance claim</option>
+        <option>Remodeling</option>
+        <option>Flooring</option>
+        <option>Drainage</option>
+        <option>Not sure &mdash; need someone to look</option>
+      </select>
+      <select>
+        <option>How soon?</option>
+        <option>It is leaking now</option>
+        <option>Within a couple of weeks</option>
+        <option>Next month or two</option>
+        <option>Getting prices for a budget</option>
+      </select>
+      <button class="btn">Get my direct quote</button>
+    </div>
+    <div class="fnote">Your details stay with us. We do not sell or share enquiries, and you will not get calls from
+    other contractors because you filled this in.</div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trustin">
+    <div class="fact"><b>30+</b>years in Central New Mexico</div>
+    <div class="fact"><b>8,000+</b>roofs installed</div>
+    <div class="fact"><b>Direct</b>your enquiry is never sold on</div>
+    <div class="fact"><b>Local</b>Albuquerque based, not a franchise</div>
+  </div>
+</div>
+
+<a name="direct"></a>
+<section class="band">
+  <div class="wrap">
+    <p class="sh">Why calling a contractor directly gets you a better job.</p>
+    <div class="two">
+      <div class="box">
+        <h3>What happens on a lead website</h3>
+        <ul class="ticks">
+          <li>Your details are sold to several contractors at once</li>
+          <li>Three or four firms call you within the hour</li>
+          <li>Each one is racing the others, so the visit is rushed</li>
+          <li>The winner is whoever quotes lowest, not whoever is right</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>What happens when you call us</h3>
+        <ul class="ticks">
+          <li>One company has your details and nobody else does</li>
+          <li>We come when it suits you, not in a race</li>
+          <li>We can spend the time to look properly</li>
+          <li>You get one price we can stand behind for years</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hint">A cheap price from a contractor who was rushing to beat three others is not a saving. It is a
+    roof you will be dealing with again.</div>
+  </div>
+</section>
+
+<a name="roofing"></a>
+<section class="band">
+  <div class="wrap">
+    <p class="sh">Roofing.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ctop">Roof replacement</div>
+        <div class="cbody">
+          <ul class="ticks">
+            <li>Full tear-off and replacement</li>
+            <li>Shingle, metal and flat systems</li>
+            <li>Written scope with the materials named</li>
+            <li>Site cleaned properly before we leave</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctop">Roof repair</div>
+        <div class="cbody">
+          <ul class="ticks">
+            <li>Leaks traced, not patched blind</li>
+            <li>Flashing, valleys and penetrations</li>
+            <li>Honest answer on repair versus replace</li>
+            <li>Small jobs still taken on</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctop">Storm &amp; insurance</div>
+        <div class="cbody">
+          <ul class="ticks">
+            <li>New Mexico hail and wind damage documented</li>
+            <li>Photographed to an insurer's standard</li>
+            <li>We meet the adjuster on site</li>
+            <li>Straight answer on whether to claim at all</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a name="restoration"></a>
+<section class="band">
+  <div class="wrap">
+    <p class="sh">Everything else the property needs.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ctop">Remodeling</div>
+        <div class="cbody">
+          <ul class="ticks">
+            <li>Interior and exterior remodeling</li>
+            <li>One contractor across the whole job</li>
+            <li>Useful when a roof claim uncovers more</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctop">Flooring</div>
+        <div class="cbody">
+          <ul class="ticks">
+            <li>Replacement and installation</li>
+            <li>Water-damaged floors after a leak</li>
+            <li>Handled by the same team, one schedule</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ctop">Drainage</div>
+        <div class="cbody">
+          <ul class="ticks">
+            <li>Water moved away from the building properly</li>
+            <li>The cause behind a lot of repeat damage</li>
+            <li>Fixed while the roof work is already open</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="fnote">Being able to do all four is a genuine advantage and your current site already lists them. The
+    version above simply leads with the reason a homeowner should call you rather than the list of what you sell.</div>
+  </div>
+</section>
+
+<a name="areas"></a>
+<section class="band">
+  <div class="wrap">
+    <p class="sh">Where we work.</p>
+    <div class="areas">
+      <span>Albuquerque</span><span>Rio Rancho</span><span>Los Lunas</span><span>Bernalillo</span>
+      <span>Corrales</span><span>Belen</span><span>Placitas</span><span>Tijeras</span>
+      <span>Edgewood</span><span>Bosque Farms</span>
+    </div>
+    <div class="hint">You already have pages for Albuquerque and Los Lunas, so the pattern works. The rest of the
+    metro on the same pattern is how somebody searching their own town finds you instead of a lead site.</div>
+  </div>
+</section>
+
+<div class="cta2">
+  <div class="wrap">
+    <h2>Call the contractor, not the auction.</h2>
+    <p>Thirty years in New Mexico. One visit, one price, and your details stay with us.</p>
+    <a class="btn" href="#quote">Get my direct quote</a>
+  </div>
+</div>
+
+<div class="fnote" style="text-align:center;padding:26px 22px;max-width:920px;margin:0 auto">
+  <b>Concept page prepared by AG1 Consulting for Adam and Alfonso, 28 September 2026.</b> This is a design and
+  positioning proposal, not a live website and not a finished product. <b>&#9888; AG1 could not fetch
+  sandiabuildingsolutions.com &mdash; every request returned a captcha challenge &mdash; so the services, the 30-year
+  figure and the 8,000+ roof figure are taken from your own pages as they appear in Google's search index, read on 28
+  September 2026, and have NOT been independently verified.</b>
+  <b>&#9888; Service areas, licensing, insurance, roofing systems, insurance-claim handling and the described process
+  are DRAFTS and would each be confirmed with you before anything went live. The &ldquo;we do not sell or share
+  enquiries&rdquo; wording is a proposed commitment, not a description of your current practice &mdash; it must be true
+  of your actual process, and match your privacy policy, before it is published.</b>
+  <b>&#9888; The comparison with lead-website behaviour is a general description of the shared-lead model, not a
+  statement about any specific platform's current terms or practices. No price, saving, job volume, ranking or revenue
+  outcome is promised or implied anywhere on this page.</b>
+</div>
